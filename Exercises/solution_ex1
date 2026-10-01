@@ -1,0 +1,11 @@
+__global__ void kernel(int *in_data, int *out_data, int *out_tid, int N)
+{   
+    
+    int tid = blockIdx.x * blockDim.x + threadIdx.x;
+    for (int i = tid; i < N; i += blockDim.x * gridDim.x) 
+      {
+       	out_data[i] = in_data[i*2] + in_data[i*2+1];
+        out_tid[i] = tid;
+      }
+}
+
