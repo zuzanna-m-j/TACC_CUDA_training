@@ -86,7 +86,7 @@ int main()
 
 
     cudaEventRecord(start);
-    arrayAdd<<<blocksPerGrid, threadsPerBlock>>>(d_a, d_b, d_out, N);
+    arrayAdd_gridStride<<<blocksPerGrid, threadsPerBlock>>>(d_a, d_b, d_out, N);
     cudaEventRecord(stop);
     cudaEventSynchronize(stop);
     cudaEventElapsedTime(&gpu_time, start, stop);
